@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+    <form-beans>
+        <form-bean name="helloForm" type="com.app.form.HelloWorldForm"/>
+        <form-bean name="testForm" type="com.app.form.TestForm"/>
+    </form-beans>
+
+    <action-mappings>
+        <action path="/hello" 
+                type="org.springframework.web.struts.DelegatingActionProxy" 
+                parameter="helloWorldActionBean"
+                name="helloForm" 
+                scope="request" 
+                validate="false">
+            <forward name="success" path="/hello.jsp"/>
+        </action>
+        <action path="/test" 
+                type="com.app.action.TestAction" 
+                name="testForm" 
+                scope="request" 
+                validate="false">
+            
+            <forward name="success" path="/test.jsp"/>
+        </action>
+    </action-mappings>
+</struts-config>
